@@ -16,7 +16,12 @@ app.add_middleware(
 )
 
 
-@app.get("/health")
+@app.get("/")
+def root() -> dict:
+    return {"message": "CKD Early Detection API", "docs": "/docs", "health": "/health"}
+
+
+@app.api_route("/health", methods=["GET", "HEAD"])
 def health() -> dict:
     return {"status": "ok"}
 

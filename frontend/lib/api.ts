@@ -30,13 +30,15 @@ export type PredictionResponse = {
   probability: number;
 };
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_CKD_API_URL ?? "http://127.0.0.1:8000";
+const API_BASE_URL = (
+  process.env.NEXT_PUBLIC_CKD_API_URL ?? "http://127.0.0.1:8000"
+).replace(/\/$/, "");
 
 export const predictCKD = async (
   payload: CKDFeatures
 ): Promise<PredictionResponse> => {
-  const res = await fetch(`${API_BASE_URL}/predict`, {
+  const url = `${API_BASE_URL}/predict`;
+  const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -44,6 +46,11 @@ export const predictCKD = async (
 
   if (!res.ok) {
     const text = await res.text();
+    if (res.status === 404) {
+      throw new Error(
+        "API not found. Set NEXT_PUBLIC_CKD_API_URL to your Render URL (no trailing slash) and redeploy."
+      );
+    }
     throw new Error(text || `Prediction failed: ${res.statusText}`);
   }
 

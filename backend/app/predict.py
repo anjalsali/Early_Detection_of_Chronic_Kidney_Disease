@@ -26,9 +26,14 @@ def predict_ckd(features: CKDFeatures) -> PredictionResponse:
     input_df = pd.DataFrame([feature_dict])
 
     probabilities: np.ndarray = ckd_model.predict_proba(input_df)[0]
+    # Return probability of CKD (class 1) so "risk" in the UI always means risk of CKD
+    ckd_class_index = int(np.argmax(ckd_model.classes_ == 1))
+    ckd_probability = float(probabilities[ckd_class_index])
     predicted_index = int(np.argmax(probabilities))
     predicted_class = int(ckd_model.classes_[predicted_index])
-    predicted_probability = float(probabilities[predicted_index])
 
-    return PredictionResponse(prediction=predicted_class, probability=predicted_probability)
+    return PredictionResponse(
+        prediction=predicted_class,
+        probability=ckd_probability,
+    )
 
