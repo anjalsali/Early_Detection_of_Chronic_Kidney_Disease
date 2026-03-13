@@ -1,0 +1,11 @@
+# Render Blueprint: deploy backend only. Frontend deploy on Vercel (see DEPLOYMENT.md).
+services:
+  - type: web
+    name: ckd-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt && python backend/train_model.py
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.10.0"

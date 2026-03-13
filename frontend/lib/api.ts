@@ -1,0 +1,51 @@
+export type CKDFeatures = {
+  age: number;
+  bloodPressure: number;
+  specificGravity: number;
+  albumin: number;
+  sugar: number;
+  redBloodCells: number;
+  pusCells: number;
+  pusCellClumps: number;
+  bacteria: number;
+  bloodGlucoseRandom: number;
+  bloodUrea: number;
+  serumCreatinine: number;
+  sodium: number;
+  potassium: number;
+  haemoglobin: number;
+  packedCellVolume: number;
+  whiteBloodCellCount: number;
+  redBloodCellCount: number;
+  hypertension: number;
+  diabetesMellitus: number;
+  coronaryArteryDisease: number;
+  appetite: number;
+  pedalEdema: number;
+  anemia: number;
+};
+
+export type PredictionResponse = {
+  prediction: number;
+  probability: number;
+};
+
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_CKD_API_URL ?? "http://127.0.0.1:8000";
+
+export const predictCKD = async (
+  payload: CKDFeatures
+): Promise<PredictionResponse> => {
+  const res = await fetch(`${API_BASE_URL}/predict`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(text || `Prediction failed: ${res.statusText}`);
+  }
+
+  return res.json();
+};
