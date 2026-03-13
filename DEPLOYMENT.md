@@ -2,15 +2,13 @@
 
 The app has two parts:
 - **Frontend** (Next.js) → **Vercel**
-- **Backend** (FastAPI + ML) → **Render** or **Railway** (Vercel doesn’t run long‑running Python/ML well)
+- **Backend** (FastAPI + ML) → **Render** (Vercel doesn’t run long‑running Python/ML well)
 
 ---
 
 ## 1. Deploy backend first (Render — free tier)
 
 You need a live backend URL before deploying the frontend.
-
-### Option A: Render
 
 1. Push your code to **GitHub** (include `backend/`, `CKD_Preprocessed.csv`, and `frontend/`).
 
@@ -34,20 +32,7 @@ You need a live backend URL before deploying the frontend.
 
 5. **Create Web Service**. Wait for deploy. Note the URL, e.g. `https://your-app-name.onrender.com`.
 
-6. **Important:** Copy `backend/ml/ckd_model.pkl` into the repo (train locally and commit it), or ensure the build step runs `python backend/train_model.py` so the model is created at build time. If the CSV is in the repo root, the build will create the model.
-
-### Option B: Railway
-
-1. Push code to GitHub. Go to https://railway.app → **New Project** → **Deploy from GitHub** → select repo.
-
-2. Set **Root Directory** to the repo root. Railway will try to detect. Add a **nixpacks.toml** or **Dockerfile** in the repo root if you want to force Python.
-
-3. **Variables:** Add `PORT` if needed (Railway often injects it).
-
-4. **Build:** `pip install -r backend/requirements.txt && python backend/train_model.py`  
-   **Start:** `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`
-
-5. Deploy and copy the public URL (e.g. `https://your-app.up.railway.app`).
+6. **Important:** Ensure the build step runs `python backend/train_model.py` so the model is created at build time. The CSV must be at repo root.
 
 ---
 
@@ -81,7 +66,7 @@ The backend already allows all origins in code (`allow_origins=["*"]`). If you l
 
 | Part      | Where to deploy | URL you need                    |
 |-----------|-----------------|----------------------------------|
-| Backend   | Render / Railway| e.g. `https://xxx.onrender.com` |
+| Backend   | Render         | e.g. `https://xxx.onrender.com` |
 | Frontend  | Vercel          | Set `NEXT_PUBLIC_CKD_API_URL` to backend URL |
 
 After both are deployed, open the Vercel frontend URL and use the form; it will call the deployed backend.
