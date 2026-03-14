@@ -14,7 +14,7 @@ const Hero = () => (
     <div className="absolute inset-0 bg-linear-to-b from-red-50/80 via-white to-slate-50/50" />
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(220,38,38,0.12),transparent_50%)]" />
     <div className="relative z-10 mx-auto max-w-3xl space-y-8">
-      <h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+      <h1 className="text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl xl:text-8xl [font-family:var(--font-plus-jakarta),ui-sans-serif,sans-serif]">
         <span className="text-red-700">Renal</span>
         <span className="text-slate-800">Check</span>
       </h1>
