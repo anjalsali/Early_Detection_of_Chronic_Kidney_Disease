@@ -38,7 +38,11 @@ const Navbar = () => {
             <li key={href}>
               <a
                 href={href}
-                className="text-sm font-medium text-zinc-600 transition hover:text-red-600"
+                className={`text-sm font-medium transition ${
+                  href === "#detection"
+                    ? "text-red-600 hover:text-black"
+                    : "text-zinc-600 hover:text-red-600"
+                }`}
               >
                 {label}
               </a>
@@ -67,7 +71,7 @@ const Navbar = () => {
             <li key={href}>
               <a
                 href={href}
-                className="block py-2 text-sm font-medium text-zinc-600"
+                className={`block py-2 text-sm font-medium ${href === "#detection" ? "text-red-600" : "text-zinc-600"}`}
                 onClick={handleNavClick}
               >
                 {label}

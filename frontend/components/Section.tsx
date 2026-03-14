@@ -17,7 +17,7 @@ const Section = ({ id, children, className = "", title, subtitle }: SectionProps
     <section
       id={id}
       ref={ref}
-      className={`transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${className}`}
+      className={`scroll-mt-24 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${className}`}
     >
       {(title || subtitle) && (
         <div className="mb-10 text-center">

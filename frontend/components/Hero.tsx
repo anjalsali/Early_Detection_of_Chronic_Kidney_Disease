@@ -9,7 +9,7 @@ const heroButtonClass =
 const Hero = () => (
   <section
     id="hero"
-    className="relative flex min-h-[85vh] flex-col items-center justify-center px-4 pt-24 pb-16 text-center md:pt-32"
+    className="relative flex min-h-[85vh] scroll-mt-24 flex-col items-center justify-center px-4 pt-24 pb-16 text-center md:pt-32"
   >
     <div className="absolute inset-0 bg-linear-to-b from-red-50/80 via-white to-slate-50/50" />
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(220,38,38,0.12),transparent_50%)]" />
