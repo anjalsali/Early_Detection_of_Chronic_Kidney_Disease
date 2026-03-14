@@ -101,6 +101,185 @@ export default function Home() {
                            likelihood, for decision support only.
                         </p>
                      </div>
+                     <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-lg shadow-zinc-200/40">
+                        <h3 className="font-semibold text-zinc-900">The 24 input parameters</h3>
+                        <p className="mt-2 text-sm text-zinc-600">
+                           The same <strong>24 clinical and demographic attributes</strong> from the UCI CKD dataset are used both to train the DNN and to produce a risk estimate in this app. Each value
+                           you enter is preprocessed the same way as in the study (MinMax scaling, categorical encoding), then passed through the trained model. Below, parameters are grouped by
+                           category for comparison; units and normal ranges match the form and the original dataset.
+                        </p>
+                        <div className="mt-6 overflow-x-auto">
+                           <table className="w-full min-w-[640px] border-collapse text-left text-sm" aria-label="CKD model parameters by category">
+                              <thead>
+                                 <tr className="border-b border-zinc-200 bg-zinc-50/80">
+                                    <th className="py-3 pr-4 font-semibold text-zinc-900">Parameter</th>
+                                    <th className="py-3 pr-4 font-semibold text-zinc-900">Category</th>
+                                    <th className="py-3 pr-4 font-semibold text-zinc-900">Unit / format</th>
+                                    <th className="py-3 font-semibold text-zinc-900">Role in CKD assessment</th>
+                                 </tr>
+                              </thead>
+                              <tbody className="text-zinc-600">
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Age</td>
+                                    <td className="py-2.5 pr-4">Demographics &amp; vitals</td>
+                                    <td className="py-2.5 pr-4">Years</td>
+                                    <td className="py-2.5">Risk increases with age; used as a demographic factor.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Blood pressure</td>
+                                    <td className="py-2.5 pr-4">Demographics &amp; vitals</td>
+                                    <td className="py-2.5 pr-4">mm/Hg</td>
+                                    <td className="py-2.5">Hypertension is a major risk factor and can both cause and result from CKD.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Specific gravity (urine)</td>
+                                    <td className="py-2.5 pr-4">Urine tests</td>
+                                    <td className="py-2.5 pr-4">1.010–1.025</td>
+                                    <td className="py-2.5">Low values can indicate poor concentrating ability of the kidneys.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Albumin (urine)</td>
+                                    <td className="py-2.5 pr-4">Urine tests</td>
+                                    <td className="py-2.5 pr-4">0–5 scale</td>
+                                    <td className="py-2.5">Proteinuria (elevated albumin) is a key marker of kidney damage.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Sugar (urine)</td>
+                                    <td className="py-2.5 pr-4">Urine tests</td>
+                                    <td className="py-2.5 pr-4">0–5 scale</td>
+                                    <td className="py-2.5">Glycosuria can reflect diabetes, a leading cause of CKD.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Red blood cells (urine)</td>
+                                    <td className="py-2.5 pr-4">Urine (binary)</td>
+                                    <td className="py-2.5 pr-4">Normal / abnormal</td>
+                                    <td className="py-2.5">Haematuria may indicate glomerular or other kidney pathology.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Pus cells (urine)</td>
+                                    <td className="py-2.5 pr-4">Urine (binary)</td>
+                                    <td className="py-2.5 pr-4">Normal / abnormal</td>
+                                    <td className="py-2.5">Pyuria can suggest infection or inflammation.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Pus cell clumps</td>
+                                    <td className="py-2.5 pr-4">Urine (binary)</td>
+                                    <td className="py-2.5 pr-4">Present / not present</td>
+                                    <td className="py-2.5">Additional urine sediment finding.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Bacteria (urine)</td>
+                                    <td className="py-2.5 pr-4">Urine (binary)</td>
+                                    <td className="py-2.5 pr-4">Present / not present</td>
+                                    <td className="py-2.5">Bacteriuria can indicate UTI; recurrent infections may affect kidney function.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Blood glucose (random)</td>
+                                    <td className="py-2.5 pr-4">Blood tests</td>
+                                    <td className="py-2.5 pr-4">mg/dL</td>
+                                    <td className="py-2.5">Diabetes is a leading cause of CKD; glucose level is a proxy for control.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Blood urea</td>
+                                    <td className="py-2.5 pr-4">Blood tests</td>
+                                    <td className="py-2.5 pr-4">mg/dL</td>
+                                    <td className="py-2.5">Elevated urea often reflects reduced glomerular filtration (kidney function).</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Serum creatinine</td>
+                                    <td className="py-2.5 pr-4">Blood tests</td>
+                                    <td className="py-2.5 pr-4">mg/dL</td>
+                                    <td className="py-2.5">Primary marker of kidney function; raised levels indicate impaired filtration.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Sodium</td>
+                                    <td className="py-2.5 pr-4">Blood tests</td>
+                                    <td className="py-2.5 pr-4">mEq/L</td>
+                                    <td className="py-2.5">Electrolyte imbalance can occur in CKD; used with potassium for context.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Potassium</td>
+                                    <td className="py-2.5 pr-4">Blood tests</td>
+                                    <td className="py-2.5 pr-4">mEq/L</td>
+                                    <td className="py-2.5">Hyperkalaemia is common in advanced CKD; critical for risk stratification.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Haemoglobin</td>
+                                    <td className="py-2.5 pr-4">Blood tests</td>
+                                    <td className="py-2.5 pr-4">g/dL</td>
+                                    <td className="py-2.5">Anaemia is a frequent complication of CKD (reduced EPO).</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Packed cell volume (hematocrit)</td>
+                                    <td className="py-2.5 pr-4">Blood tests</td>
+                                    <td className="py-2.5 pr-4">%</td>
+                                    <td className="py-2.5">Correlates with haemoglobin; low values support anaemia.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">White blood cell count</td>
+                                    <td className="py-2.5 pr-4">Blood tests</td>
+                                    <td className="py-2.5 pr-4">per µL</td>
+                                    <td className="py-2.5">Infection or inflammation marker; context for urine findings.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Red blood cell count</td>
+                                    <td className="py-2.5 pr-4">Blood tests</td>
+                                    <td className="py-2.5 pr-4">millions/cmm</td>
+                                    <td className="py-2.5">Low count can indicate anaemia associated with CKD.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Hypertension</td>
+                                    <td className="py-2.5 pr-4">Clinical (yes/no)</td>
+                                    <td className="py-2.5 pr-4">Yes / No</td>
+                                    <td className="py-2.5">Major cause and consequence of CKD; strong risk factor.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Diabetes mellitus</td>
+                                    <td className="py-2.5 pr-4">Clinical (yes/no)</td>
+                                    <td className="py-2.5 pr-4">Yes / No</td>
+                                    <td className="py-2.5">Leading cause of CKD; diabetic nephropathy is common.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Coronary artery disease</td>
+                                    <td className="py-2.5 pr-4">Clinical (yes/no)</td>
+                                    <td className="py-2.5 pr-4">Yes / No</td>
+                                    <td className="py-2.5">Cardiovascular comorbidity; CKD and CVD often coexist.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Poor appetite</td>
+                                    <td className="py-2.5 pr-4">Clinical (yes/no)</td>
+                                    <td className="py-2.5 pr-4">Yes / No</td>
+                                    <td className="py-2.5">Symptom of uraemia and advancing CKD.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Pedal oedema</td>
+                                    <td className="py-2.5 pr-4">Clinical (yes/no)</td>
+                                    <td className="py-2.5 pr-4">Yes / No</td>
+                                    <td className="py-2.5">Fluid retention; can reflect volume overload in kidney disease.</td>
+                                 </tr>
+                                 <tr className="border-b border-zinc-100">
+                                    <td className="py-2.5 pr-4 font-medium text-zinc-800">Anaemia</td>
+                                    <td className="py-2.5 pr-4">Clinical (yes/no)</td>
+                                    <td className="py-2.5 pr-4">Yes / No</td>
+                                    <td className="py-2.5">Common complication of CKD; reinforces haemoglobin/PCV.</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <p className="mt-4 text-sm text-zinc-500">
+                           In the app, numerical parameters use the units above; binary and categorical inputs are encoded (e.g. 0/1) before being scaled with the same preprocessor used in training. The
+                           DNN then outputs a single probability, which is shown as a percentage and classified as high or low likelihood.
+                        </p>
+                     </div>
+                     <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-lg shadow-zinc-200/40">
+                        <h3 className="font-semibold text-zinc-900">From form to risk estimate</h3>
+                        <p className="mt-2 text-sm text-zinc-600">
+                           When you submit the risk assessment form: (1) your <strong>24 inputs</strong> are sent to the backend in the same structure as the UCI dataset; (2) the same{" "}
+                           <strong>preprocessor</strong> (saved from training) applies MinMax scaling and any encoding so the feature vector matches what the DNN was trained on; (3) the{" "}
+                           <strong>trained DNN</strong> produces a probability between 0 and 1; (4) the app displays this as a <strong>percentage</strong> and a <strong>high/low likelihood</strong> label
+                           (threshold 50%). This pipeline is identical in structure to the research workflow—only the input source changes (user form instead of dataset rows).
+                        </p>
+                     </div>
                      <ul className="grid gap-6 sm:grid-cols-3">
                         <li className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-lg shadow-zinc-200/40">
                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-red-100 to-rose-100 text-lg font-bold text-red-800">1</span>
