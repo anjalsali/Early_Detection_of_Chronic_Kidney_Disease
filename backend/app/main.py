@@ -10,7 +10,7 @@ from .predict import predict_ckd
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="CKD Early Detection API", version="1.0.0")
+app = FastAPI(title="RenalCheck API", version="1.0.0")
 
 
 class RequestLogMiddleware(BaseHTTPMiddleware):
@@ -31,7 +31,7 @@ app.add_middleware(
 
 @app.get("/")
 def root() -> dict:
-    return {"message": "CKD Early Detection API", "docs": "/docs", "health": "/health"}
+    return {"message": "RenalCheck API", "docs": "/docs", "health": "/health"}
 
 
 @app.api_route("/health", methods=["GET", "HEAD"])

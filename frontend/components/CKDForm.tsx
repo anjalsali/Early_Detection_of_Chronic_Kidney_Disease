@@ -173,7 +173,7 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
       className="space-y-8"
       aria-label="CKD risk assessment form"
     >
-      <div className="rounded-xl border border-violet-100 bg-linear-to-br from-violet-50/40 to-white p-6 ">
+      <div className="rounded-xl border border-red-100 bg-linear-to-br from-red-50/40 to-white p-6 ">
         <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-zinc-500">
           Demographics &amp; vitals
         </h3>
@@ -195,7 +195,7 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
                   min={meta?.min ?? "0"}
                   value={formState[field] === 0 && field !== "specificGravity" ? "" : formState[field]}
                   onChange={handleNumericChange(field)}
-                  className="mt-1 block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-900 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/25 "
+                  className="mt-1 block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-900 shadow-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/25 "
                   aria-required={field === "age"}
                   aria-describedby={`${field}-hint`}
                 />
@@ -208,7 +208,7 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
         </div>
       </div>
 
-      <div className="rounded-xl border border-violet-100 bg-linear-to-br from-violet-50/40 to-white p-6 ">
+      <div className="rounded-xl border border-red-100 bg-linear-to-br from-red-50/40 to-white p-6 ">
         <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-zinc-500">
           Urine &amp; lab values
         </h3>
@@ -230,7 +230,7 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
                   min={meta?.min ?? "0"}
                   value={formState[field] === 0 && field !== "specificGravity" ? "" : formState[field]}
                   onChange={handleNumericChange(field)}
-                  className="mt-1 block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-900 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/25 "
+                  className="mt-1 block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-900 shadow-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/25 "
                   aria-describedby={`${field}-hint`}
                 />
                 <p id={`${field}-hint`} className="mt-1 text-xs text-zinc-500">
@@ -242,7 +242,7 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
         </div>
       </div>
 
-      <div className="rounded-xl border border-violet-100 bg-linear-to-br from-violet-50/40 to-white p-6 ">
+      <div className="rounded-xl border border-red-100 bg-linear-to-br from-red-50/40 to-white p-6 ">
         <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-zinc-500">
           Yes / No — conditions and findings
         </h3>
@@ -260,7 +260,7 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
                 name={key}
                 value={formState[key]}
                 onChange={handleBinaryChange(key)}
-                className="block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-900 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/25"
+                className="block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-900 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/25"
                 aria-label={`${label}: Yes or No`}
               >
                 <option value={0}>No</option>
@@ -284,7 +284,7 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-xl bg-linear-to-r from-violet-600 to-purple-600 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-violet-500/30 transition hover:from-violet-700 hover:to-purple-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600 disabled:opacity-60 sm:w-auto sm:min-w-[200px]"
+        className="w-full rounded-xl bg-linear-to-r from-red-600 to-rose-600 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-red-500/30 transition hover:from-red-700 hover:to-rose-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 disabled:opacity-60 sm:w-auto sm:min-w-[200px]"
       >
         {isSubmitting ? "Evaluating…" : "Check CKD risk"}
       </button>

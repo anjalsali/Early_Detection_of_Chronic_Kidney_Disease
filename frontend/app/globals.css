@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: 124 58 237; /* violet-600 */
+  --primary: 220 38 38; /* red-600 */
 }
 
 @theme inline {
@@ -25,5 +25,5 @@ body {
 }
 
 ::selection {
-  background: rgba(124, 58, 237, 0.2);
+  background: rgba(220, 38, 38, 0.2);
 }

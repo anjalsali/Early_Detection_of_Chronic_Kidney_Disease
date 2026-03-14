@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 const navLinks = [
   { href: "#hero", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#how-it-works", label: "How it works" },
   { href: "#study-results", label: "Study results" },
+  { href: "#how-it-works", label: "How it works" },
   { href: "#detection", label: "Risk assessment" },
 ];
 
@@ -29,15 +29,16 @@ const Navbar = () => {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6" aria-label="Main navigation">
-        <a href="#hero" className="text-lg font-semibold bg-linear-to-r from-violet-700 to-purple-700 bg-clip-text text-transparent">
-          CKD Early Detection
+        <a href="#hero" className="text-lg font-semibold tracking-tight">
+          <span className="text-red-700">Renal</span>
+          <span className="text-slate-800">Check</span>
         </a>
         <ul className="hidden gap-8 md:flex">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
               <a
                 href={href}
-                className="text-sm font-medium text-zinc-600 transition hover:text-violet-600"
+                className="text-sm font-medium text-zinc-600 transition hover:text-red-600"
               >
                 {label}
               </a>

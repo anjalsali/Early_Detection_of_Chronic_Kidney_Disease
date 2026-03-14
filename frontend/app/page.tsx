@@ -28,7 +28,7 @@ export default function Home() {
             title="About this project"
             subtitle="MSc research from the University of Hertfordshire on early CKD detection using machine learning."
           >
-            <div className="mx-auto max-w-3xl space-y-5 rounded-2xl border border-violet-100 bg-linear-to-br from-violet-50/60 to-white p-8 shadow-lg shadow-zinc-200/40">
+            <div className="mx-auto max-w-3xl space-y-5 rounded-2xl border border-red-100 bg-linear-to-br from-red-50/60 to-white p-8 shadow-lg shadow-zinc-200/40">
               <p className="text-zinc-700">
                 Chronic Kidney Disease (CKD) poses a significant global health challenge: the gradual decline of kidney function can lead to cardiovascular disease, anaemia, bone disorders, and end-stage renal failure. Early stages are often <strong>asymptomatic</strong>, making timely detection difficult. Early detection is critical to intervene with targeted treatments, slow or halt progression, and reduce the need for costly interventions such as dialysis or transplantation.
               </p>
@@ -36,7 +36,7 @@ export default function Home() {
                 This study uses a comprehensive dataset (clinical and demographic variables) from the <strong>UCI Chronic Kidney Disease repository</strong>—400 patient records with 24 attributes—to examine the effectiveness of three machine learning methods: <strong>Support Vector Machines (SVM)</strong>, <strong>K-Nearest Neighbors (KNN)</strong>, and a <strong>Deep Neural Network (DNN)</strong>. After data collection, cleaning, exploratory data analysis (EDA), and preprocessing (imputation, encoding, SMOTE for class imbalance, MinMax scaling), the models were evaluated using accuracy, precision, recall, F1-score, and AUC. <strong>Comparative analysis showed the DNN achieved the highest accuracy (97.87%)</strong>, followed by KNN (79.2%) and SVM (61.6%), highlighting the algorithms’ strengths and limitations and contributing to the discourse on machine learning in healthcare.
               </p>
               <p className="text-zinc-600 text-sm">
-                This web app uses the trained <strong>Deep Neural Network (DNN)</strong> to estimate the <strong>likelihood of early CKD</strong> from the same 24 inputs. It is a <strong>decision-support tool</strong> only and does not replace clinical assessment, laboratory diagnosis, or specialist care. Research: <em>Early Detection of Chronic Kidney Disease Using Machine Learning Techniques</em> (University of Hertfordshire, 2023). Keywords: CKD, SVM, KNN, Deep Neural Network (DNN).
+                RenalCheck uses the trained <strong>Deep Neural Network (DNN)</strong> to estimate the <strong>likelihood of early CKD</strong> from the same 24 inputs. It is a <strong>decision-support tool</strong> only and does not replace clinical assessment, laboratory diagnosis, or specialist care. Research: <em>Early Detection of Chronic Kidney Disease Using Machine Learning Techniques</em> (University of Hertfordshire, 2023). Keywords: CKD, SVM, KNN, Deep Neural Network (DNN).
               </p>
             </div>
           </Section>
@@ -77,21 +77,21 @@ export default function Home() {
               </div>
               <ul className="grid gap-6 sm:grid-cols-3">
                 <li className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-lg shadow-zinc-200/40">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-violet-100 to-purple-100 text-lg font-bold text-violet-800">1</span>
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-red-100 to-rose-100 text-lg font-bold text-red-800">1</span>
                   <h3 className="mt-4 font-semibold text-zinc-900">Enter the 24 attributes</h3>
                   <p className="mt-2 text-sm text-zinc-600">
                     Fill in demographics, vitals, urine and blood lab values, and yes/no conditions. Normal ranges are shown to guide input in the expected units.
                   </p>
                 </li>
                 <li className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-lg shadow-zinc-200/40">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-violet-100 to-purple-100 text-lg font-bold text-violet-800">2</span>
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-red-100 to-rose-100 text-lg font-bold text-red-800">2</span>
                   <h3 className="mt-4 font-semibold text-zinc-900">Get the risk estimate</h3>
                   <p className="mt-2 text-sm text-zinc-600">
                     The DNN model returns an estimated risk of CKD (percentage) and a high/low likelihood result, for use as decision support only.
                   </p>
                 </li>
                 <li className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-lg shadow-zinc-200/40">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-violet-100 to-purple-100 text-lg font-bold text-violet-800">3</span>
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-red-100 to-rose-100 text-lg font-bold text-red-800">3</span>
                   <h3 className="mt-4 font-semibold text-zinc-900">Use as support only</h3>
                   <p className="mt-2 text-sm text-zinc-600">
                     The result does not replace clinical judgment, lab diagnosis, or specialist care. Always follow local guidelines and professional advice.
@@ -115,7 +115,7 @@ export default function Home() {
                 {result ? (
                   <ResultCard result={result} />
                 ) : (
-                  <div className="mt-8 rounded-2xl border-2 border-dashed border-violet-200 bg-violet-50/30 p-8 text-center md:mt-0 md:sticky md:top-24">
+                  <div className="mt-8 rounded-2xl border-2 border-dashed border-red-200 bg-red-50/30 p-8 text-center md:mt-0 md:sticky md:top-24">
                     <p className="text-sm font-medium text-zinc-500">Result</p>
                     <p className="mt-2 text-sm text-zinc-400">Submit the form to see the estimated CKD risk here.</p>
                   </div>
@@ -125,9 +125,9 @@ export default function Home() {
           </Section>
         </div>
 
-        <footer className="border-t border-violet-100 bg-linear-to-b from-slate-50 to-white py-8">
+        <footer className="border-t border-red-100 bg-linear-to-b from-slate-50 to-white py-8">
           <div className="mx-auto max-w-6xl px-4 text-center text-sm text-zinc-500 md:px-6">
-            <p>Early Detection of Chronic Kidney Disease — Decision support only. Not a substitute for professional medical care.</p>
+            <p>RenalCheck — Decision support only. Not a substitute for professional medical care.</p>
           </div>
         </footer>
       </main>

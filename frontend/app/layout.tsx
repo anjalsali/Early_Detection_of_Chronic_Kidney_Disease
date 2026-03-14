@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CKD Early Detection",
-  description: "Early detection of chronic kidney disease — decision support tool",
+  title: "RenalCheck",
+  description: "RenalCheck — Early CKD risk assessment. Decision support tool for healthcare professionals.",
 };
 
 export default function RootLayout({

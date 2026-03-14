@@ -1,7 +1,7 @@
 "use client";
 
-// Distinct palette: DNN = violet, KNN = emerald, SVM = amber (easy to tell apart in every chart)
-const DNN_COLOR = "rgb(124, 58, 237)";   // violet-600
+// Distinct palette: DNN = red (brand), KNN = emerald, SVM = amber (easy to tell apart in every chart)
+const DNN_COLOR = "rgb(220, 38, 38)";   // red-600
 const KNN_COLOR = "rgb(5, 150, 105)";    // emerald-600
 const SVM_COLOR = "rgb(217, 119, 6)";    // amber-600
 const NOT_CKD_COLOR = "rgb(71, 85, 105)"; // slate-600
@@ -97,7 +97,7 @@ const MODEL_LEGEND = [
 
 const StudyCharts = () => (
   <div className="space-y-10">
-    <div className="flex flex-wrap items-center justify-center gap-6 rounded-xl bg-violet-50/50 py-3 px-4">
+    <div className="flex flex-wrap items-center justify-center gap-6 rounded-xl bg-red-50/50 py-3 px-4">
       <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Model colours</span>
       {MODEL_LEGEND.map(({ name, color }) => (
         <span key={name} className="flex items-center gap-2 text-sm font-medium text-zinc-700">
@@ -108,7 +108,7 @@ const StudyCharts = () => (
     </div>
     <div className="grid gap-8 md:grid-cols-2">
       <div className={chartCardClass}>
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-violet-700">
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-red-700">
           Model accuracy comparison
         </h3>
         <p className="mt-1 text-xs text-zinc-500">
@@ -122,7 +122,7 @@ const StudyCharts = () => (
       </div>
 
       <div className={chartCardClass}>
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-violet-700">
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-red-700">
           AUC (Area Under ROC Curve)
         </h3>
         <p className="mt-1 text-xs text-zinc-500">
@@ -137,7 +137,7 @@ const StudyCharts = () => (
     </div>
 
     <div className={chartCardClass}>
-      <h3 className="text-sm font-semibold uppercase tracking-wide text-violet-700">
+      <h3 className="text-sm font-semibold uppercase tracking-wide text-red-700">
         Precision, recall &amp; F1-score by model
       </h3>
       <p className="mt-1 text-xs text-zinc-500">
@@ -205,7 +205,7 @@ const StudyCharts = () => (
 
     <div className="grid gap-8 md:grid-cols-2">
       <div className={chartCardClass}>
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-violet-700">
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-red-700">
           Dataset class distribution
         </h3>
         <p className="mt-1 text-xs text-zinc-500">
@@ -259,7 +259,7 @@ const StudyCharts = () => (
       </div>
 
       <div className={chartCardClass}>
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-violet-700">
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-red-700">
           Methodology pipeline
         </h3>
         <p className="mt-1 text-xs text-zinc-500">
@@ -268,7 +268,7 @@ const StudyCharts = () => (
         <div className="mt-6 flex flex-wrap items-center gap-2">
           {METHODOLOGY_STEPS.map((step, i) => (
             <span key={step} className="flex items-center gap-2">
-              <span className="rounded-lg border border-violet-200 bg-violet-50/90 px-3 py-1.5 text-xs font-medium text-violet-800 ">
+              <span className="rounded-lg border border-red-200 bg-red-50/90 px-3 py-1.5 text-xs font-medium text-red-800 ">
                 {step}
               </span>
               {i < METHODOLOGY_STEPS.length - 1 && (
@@ -284,7 +284,7 @@ const StudyCharts = () => (
 
     {/* Confusion matrices */}
     <div className={chartCardClass}>
-      <h3 className="text-sm font-semibold uppercase tracking-wide text-violet-700">
+      <h3 className="text-sm font-semibold uppercase tracking-wide text-red-700">
         Confusion matrices
       </h3>
       <p className="mt-1 text-xs text-zinc-500">
@@ -324,7 +324,7 @@ const StudyCharts = () => (
 
     {/* ROC curves - separate per model */}
     <div className="space-y-6">
-      <h3 className="text-sm font-semibold uppercase tracking-wide text-violet-700">
+      <h3 className="text-sm font-semibold uppercase tracking-wide text-red-700">
         ROC curves
       </h3>
       <p className="text-xs text-zinc-500">
