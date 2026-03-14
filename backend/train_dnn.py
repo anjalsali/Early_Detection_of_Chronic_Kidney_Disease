@@ -8,7 +8,6 @@ import joblib
 import numpy as np
 import pandas as pd
 from sklearn.compose import ColumnTransformer
-from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
@@ -97,13 +96,6 @@ def train_and_save() -> None:
         batch_size=16,
         verbose=1,
     )
-
-    y_pred_proba = model.predict(X_test_t)
-    y_pred = (y_pred_proba >= 0.5).astype(int).flatten()
-    print("Classification report:")
-    print(classification_report(y_test, y_pred))
-    print("Confusion matrix:")
-    print(confusion_matrix(y_test, y_pred))
 
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
     joblib.dump(preprocessor, PREPROCESSOR_PATH)

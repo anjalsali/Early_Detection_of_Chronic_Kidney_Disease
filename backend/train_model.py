@@ -3,7 +3,6 @@ from pathlib import Path
 
 import pandas as pd  # pyright: ignore[reportMissingImports]
 from sklearn.compose import ColumnTransformer
-from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
@@ -96,12 +95,6 @@ def train_and_save_model() -> None:
 
     pipeline = build_pipeline(feature_columns, target_column)
     pipeline.fit(X_train, y_train)
-
-    y_pred = pipeline.predict(X_test)
-    print("Classification report:")
-    print(classification_report(y_test, y_pred))
-    print("Confusion matrix:")
-    print(confusion_matrix(y_test, y_pred))
 
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
     joblib.dump(pipeline, MODEL_PATH)
