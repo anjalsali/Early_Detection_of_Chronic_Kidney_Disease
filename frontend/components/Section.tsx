@@ -21,8 +21,8 @@ const Section = ({ id, children, className = "", title, subtitle }: SectionProps
     >
       {(title || subtitle) && (
         <div className="mb-10 text-center">
-          {title && <h2 className="text-3xl font-bold text-zinc-900 dark:text-white md:text-4xl">{title}</h2>}
-          {subtitle && <p className="mt-3 max-w-2xl mx-auto text-zinc-600 dark:text-zinc-400">{subtitle}</p>}
+          {title && <h2 className="text-3xl font-bold text-zinc-900 md:text-4xl">{title}</h2>}
+          {subtitle && <p className="mt-3 max-w-2xl mx-auto text-zinc-600">{subtitle}</p>}
         </div>
       )}
       {children}

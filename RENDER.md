@@ -4,7 +4,7 @@
 
 Your repo must include (at the root of what Render will use as root):
 
-- `backend/` (with `app/`, `requirements.txt`, `train_model.py`)
+- `backend/` (with `app/`, `requirements.txt`, `train_dnn.py`)
 - `CKD_Preprocessed.csv`
 - `render.yaml` (optional; Render can use it for Blueprint deploy)
 
@@ -38,7 +38,7 @@ Use these settings (adjust **Root Directory** only if your app is in a subfolder
 | **Region** | Choose the closest to you or your recruiters |
 | **Root Directory** | Leave **empty** if this project *is* the repo root. If the project is in a subfolder (e.g. `Early_Detection_of_Chronic_Kidney_Disease`), set it to that folder name |
 | **Runtime** | **Python 3** |
-| **Build Command** | `pip install -r backend/requirements.txt && python backend/train_model.py` |
+| **Build Command** | `pip install -r backend/requirements.txt && python backend/train_dnn.py` |
 | **Start Command** | `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT` |
 
 **Environment (optional):**

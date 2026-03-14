@@ -173,8 +173,8 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
       className="space-y-8"
       aria-label="CKD risk assessment form"
     >
-      <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-zinc-700 dark:bg-zinc-800/50">
-        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+      <div className="rounded-xl border border-violet-100 bg-linear-to-br from-violet-50/40 to-white p-6 ">
+        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-zinc-500">
           Demographics &amp; vitals
         </h3>
         <div className="grid gap-5 sm:grid-cols-2">
@@ -182,7 +182,7 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
             const meta = NUMERIC_META[field];
             return (
               <div key={field}>
-                <label htmlFor={field} className="mb-1 block text-sm font-medium text-zinc-800 dark:text-zinc-200">
+                <label htmlFor={field} className="mb-1 block text-sm font-medium text-zinc-800">
                   {meta?.label ?? field}
                   {meta?.unit && <span className="ml-1 font-normal text-zinc-500">({meta.unit})</span>}
                 </label>
@@ -195,11 +195,11 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
                   min={meta?.min ?? "0"}
                   value={formState[field] === 0 && field !== "specificGravity" ? "" : formState[field]}
                   onChange={handleNumericChange(field)}
-                  className="mt-1 block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-900 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-100"
+                  className="mt-1 block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-900 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/25 "
                   aria-required={field === "age"}
                   aria-describedby={`${field}-hint`}
                 />
-                <p id={`${field}-hint`} className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                <p id={`${field}-hint`} className="mt-1 text-xs text-zinc-500">
                   Normal range: {meta?.normal ?? "—"}
                 </p>
               </div>
@@ -208,8 +208,8 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
         </div>
       </div>
 
-      <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-zinc-700 dark:bg-zinc-800/50">
-        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+      <div className="rounded-xl border border-violet-100 bg-linear-to-br from-violet-50/40 to-white p-6 ">
+        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-zinc-500">
           Urine &amp; lab values
         </h3>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -217,7 +217,7 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
             const meta = NUMERIC_META[field];
             return (
               <div key={field}>
-                <label htmlFor={field} className="mb-1 block text-sm font-medium text-zinc-800 dark:text-zinc-200">
+                <label htmlFor={field} className="mb-1 block text-sm font-medium text-zinc-800">
                   {meta?.label ?? field}
                   {meta?.unit && <span className="ml-1 font-normal text-zinc-500">({meta.unit})</span>}
                 </label>
@@ -230,10 +230,10 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
                   min={meta?.min ?? "0"}
                   value={formState[field] === 0 && field !== "specificGravity" ? "" : formState[field]}
                   onChange={handleNumericChange(field)}
-                  className="mt-1 block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-900 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-100"
+                  className="mt-1 block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-900 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/25 "
                   aria-describedby={`${field}-hint`}
                 />
-                <p id={`${field}-hint`} className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                <p id={`${field}-hint`} className="mt-1 text-xs text-zinc-500">
                   Normal: {meta?.normal ?? "—"}
                 </p>
               </div>
@@ -242,17 +242,17 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
         </div>
       </div>
 
-      <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-zinc-700 dark:bg-zinc-800/50">
-        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+      <div className="rounded-xl border border-violet-100 bg-linear-to-br from-violet-50/40 to-white p-6 ">
+        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-zinc-500">
           Yes / No — conditions and findings
         </h3>
-        <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
+        <p className="mb-4 text-sm text-zinc-600">
           For each item below, choose <strong>Yes</strong> if the condition or finding is present, otherwise <strong>No</strong>.
         </p>
         <div className="grid gap-5 sm:grid-cols-2">
           {BINARY_FIELDS.map(({ key, label }) => (
-            <div key={key} className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-900">
-              <label htmlFor={key} className="mb-2 block text-sm font-medium text-zinc-800 dark:text-zinc-200">
+            <div key={key} className="rounded-lg border border-zinc-200 bg-white p-4 ">
+              <label htmlFor={key} className="mb-2 block text-sm font-medium text-zinc-800">
                 {label}
               </label>
               <select
@@ -260,7 +260,7 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
                 name={key}
                 value={formState[key]}
                 onChange={handleBinaryChange(key)}
-                className="block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-900 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100"
+                className="block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-900 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/25"
                 aria-label={`${label}: Yes or No`}
               >
                 <option value={0}>No</option>
@@ -272,19 +272,19 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
       </div>
 
       {error && (
-        <div className="rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30" role="alert">
-          <p className="text-sm font-medium text-red-800 dark:text-red-200">{error}</p>
+        <div className="rounded-lg border border-red-200 bg-red-50 p-4 " role="alert">
+          <p className="text-sm font-medium text-red-800 ">{error}</p>
         </div>
       )}
 
-      <p className="text-xs text-amber-700 dark:text-amber-400">
+      <p className="text-xs text-amber-700">
         First request may take 30–60 seconds if the server is waking up.
       </p>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-lg bg-teal-600 px-6 py-4 text-base font-semibold text-white shadow-lg hover:bg-teal-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 disabled:opacity-60 sm:w-auto sm:min-w-[200px]"
+        className="w-full rounded-xl bg-linear-to-r from-violet-600 to-purple-600 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-violet-500/30 transition hover:from-violet-700 hover:to-purple-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600 disabled:opacity-60 sm:w-auto sm:min-w-[200px]"
       >
         {isSubmitting ? "Evaluating…" : "Check CKD risk"}
       </button>

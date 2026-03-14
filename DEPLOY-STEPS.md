@@ -16,7 +16,7 @@
    - **Name:** `ckd-api` (or any name)
    - **Runtime:** Python 3
    - **Build Command:**  
-     `pip install -r backend/requirements.txt && python backend/train_model.py`
+     `pip install -r backend/requirements.txt && python backend/train_dnn.py`
    - **Start Command:**  
      `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`
 6. (Optional) **Environment** → Add **PYTHON_VERSION** = `3.10.0`

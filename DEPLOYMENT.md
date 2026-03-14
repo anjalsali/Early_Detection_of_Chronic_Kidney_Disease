@@ -19,7 +19,7 @@ You need a live backend URL before deploying the frontend.
    - **Runtime:** Python 3.
    - **Build Command:**
      ```bash
-     pip install -r backend/requirements.txt && python backend/train_model.py
+     pip install -r backend/requirements.txt && python backend/train_dnn.py
      ```
    - **Start Command:**
      ```bash
@@ -32,7 +32,7 @@ You need a live backend URL before deploying the frontend.
 
 5. **Create Web Service**. Wait for deploy. Note the URL, e.g. `https://your-app-name.onrender.com`.
 
-6. **Important:** Ensure the build step runs `python backend/train_model.py` so the model is created at build time. The CSV must be at repo root.
+6. **Important:** Ensure the build step runs `python backend/train_dnn.py` so the DNN and preprocessor are created at build time. The CSV must be at repo root.
 
 ---
 

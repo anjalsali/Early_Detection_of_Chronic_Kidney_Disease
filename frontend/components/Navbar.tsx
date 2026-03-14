@@ -6,6 +6,7 @@ const navLinks = [
   { href: "#hero", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#how-it-works", label: "How it works" },
+  { href: "#study-results", label: "Study results" },
   { href: "#detection", label: "Risk assessment" },
 ];
 
@@ -24,11 +25,11 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 shadow-md backdrop-blur dark:bg-zinc-900/95" : "bg-transparent"
+        scrolled ? "bg-white/95 shadow-lg shadow-zinc-200/50 backdrop-blur" : "bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6" aria-label="Main navigation">
-        <a href="#hero" className="text-lg font-semibold text-teal-700 dark:text-teal-300">
+        <a href="#hero" className="text-lg font-semibold bg-linear-to-r from-violet-700 to-purple-700 bg-clip-text text-transparent">
           CKD Early Detection
         </a>
         <ul className="hidden gap-8 md:flex">
@@ -36,7 +37,7 @@ const Navbar = () => {
             <li key={href}>
               <a
                 href={href}
-                className="text-sm font-medium text-zinc-600 hover:text-teal-600 dark:text-zinc-300 dark:hover:text-teal-400"
+                className="text-sm font-medium text-zinc-600 transition hover:text-violet-600"
               >
                 {label}
               </a>
@@ -45,7 +46,7 @@ const Navbar = () => {
         </ul>
         <button
           type="button"
-          className="rounded p-2 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800 md:hidden"
+          className="rounded p-2 text-zinc-600 hover:bg-zinc-100 md:hidden"
           onClick={() => setMobileOpen((o) => !o)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
@@ -60,12 +61,12 @@ const Navbar = () => {
         </button>
       </nav>
       {mobileOpen && (
-        <ul className="border-t border-zinc-200 bg-white px-4 py-4 dark:border-zinc-800 dark:bg-zinc-900 md:hidden">
+        <ul className="border-t border-zinc-200 bg-white px-4 py-4 md:hidden">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
               <a
                 href={href}
-                className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-300"
+                className="block py-2 text-sm font-medium text-zinc-600"
                 onClick={handleNavClick}
               >
                 {label}

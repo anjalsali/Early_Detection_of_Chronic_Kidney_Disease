@@ -14,7 +14,7 @@ source .venv/Scripts/activate    # Git Bash / WSL (Windows)
 # source .venv/bin/activate     # macOS/Linux
 
 pip install -r backend/requirements.txt
-python backend/train_model.py   # trains and saves model (skip if already done)
+python backend/train_dnn.py    # trains DNN and saves preprocessor + model (skip if already done)
 python -m uvicorn backend.app.main:app --port 8000
 ```
 
@@ -34,6 +34,6 @@ Set `NEXT_PUBLIC_CKD_API_URL=http://127.0.0.1:8000` in `frontend/.env.local` if 
 
 ## Project layout
 
-- **backend/** — FastAPI app, training script, saved model (`ml/ckd_model.pkl`)
+- **backend/** — FastAPI app, DNN training script (`train_dnn.py`), saved preprocessor (`ml/preprocessor.pkl`) and DNN model (`ml/ckd_dnn.keras`)
 - **frontend/** — Next.js app (form + result card)
 - **CKD_Preprocessed.csv** — dataset used for training
