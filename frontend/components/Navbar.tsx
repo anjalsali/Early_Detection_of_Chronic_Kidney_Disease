@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const navLinks = [
@@ -30,16 +29,9 @@ const Navbar = () => {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-1.5 md:px-6 md:py-2" aria-label="Main navigation">
-        <a href="#hero" className="flex shrink-0 items-center" aria-label="NephroVision – Home">
-          <Image
-            src="/NephroVisonLogo.png"
-            alt="NephroVision"
-            width={500}
-            height={100}
-            className="h-9 w-auto max-w-[260px] shrink-0 object-contain object-left md:h-10 md:max-w-[300px]"
-            priority
-            unoptimized
-          />
+        <a href="#hero" className="flex shrink-0 items-center text-lg font-semibold tracking-tight" aria-label="NephroSight – Home">
+          <span className="text-red-700">Nephro</span>
+          <span className="text-slate-800">Sight</span>
         </a>
         <ul className="hidden gap-8 md:flex">
           {navLinks.map(({ href, label }) => (

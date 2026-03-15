@@ -18,7 +18,7 @@ const Hero = () => (
       <div className="mx-auto max-w-3xl space-y-8">
       <h1 className="text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl xl:text-8xl [font-family:var(--font-plus-jakarta),ui-sans-serif,sans-serif]">
         <span className="text-red-700">Nephro</span>
-        <span className="text-slate-800">Vision</span>
+        <span className="text-slate-800">Sight</span>
       </h1>
       <p className="text-2xl font-medium text-zinc-700 md:text-3xl lg:text-4xl" role="doc-subtitle">
         Early detection of{" "}

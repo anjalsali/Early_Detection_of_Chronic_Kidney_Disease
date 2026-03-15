@@ -24,7 +24,7 @@ except ImportError:
     from ml.feature_pipeline import FEATURE_COLUMNS, raw_ckd_csv_to_features
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DATA_PATH = PROJECT_ROOT / "CKD_initial_dataset.csv"
+DATA_PATH = PROJECT_ROOT / "Research Materials" / "CKD_initial_dataset.csv"
 MODEL_DIR = PROJECT_ROOT / "backend" / "ml"
 PREPROCESSOR_PATH = MODEL_DIR / "preprocessor.pkl"
 DNN_PATH = MODEL_DIR / "ckd_dnn.keras"

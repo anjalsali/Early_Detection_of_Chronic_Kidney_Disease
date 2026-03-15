@@ -19,8 +19,8 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "NephroVision",
-  description: "NephroVision — Early CKD risk assessment. Decision support tool for healthcare professionals.",
+  title: "NephroSight",
+  description: "NephroSight — Early CKD risk assessment. Decision support tool for healthcare professionals.",
 };
 
 export default function RootLayout({

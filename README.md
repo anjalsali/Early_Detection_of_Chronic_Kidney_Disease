@@ -1,10 +1,10 @@
 # Early Detection of Chronic Kidney Disease
 
-Thesis project: ML-based early CKD detection and a web app for risk assessment. The app is branded **NephroVision**.
+Thesis project: ML-based early CKD detection and a web app for risk assessment. The app is branded **NephroSight**.
 
 ## Dataset & model
 
-- **Training data:** `CKD_initial_dataset.csv` (UCI CKD repository, raw columns: age, bp, sg, al, su, rbc, pc, …, `classification`: `ckd` / `notckd`).
+- **Training data:** `Research Materials/CKD_initial_dataset.csv` (UCI CKD repository, raw columns: age, bp, sg, al, su, rbc, pc, …, `classification`: `ckd` / `notckd`).
 - **Model:** Deep neural network (Keras): dense layers + dropout + batch norm, **binary cross-entropy**, **sigmoid** output = **P(CKD)**.
 - **Preprocessing:** Median imputation + `StandardScaler` on 24 features (aligned with the web form).
 - **Probability:** Model outputs logits; **temperature scaling** is applied at inference so risk % spreads across 0–100% (green / amber / red) instead of saturating at 0 or 100.
@@ -69,9 +69,8 @@ NEXT_PUBLIC_CKD_API_URL=http://127.0.0.1:8001
 
 ## Project layout
 
-- **CKD_initial_dataset.csv** — source data for training  
-- **backend/train_dnn.py** — trains DNN + saves artifacts  
-- **backend/ml/feature_pipeline.py** — maps raw CSV → 24 API features  
+- **Research Materials/** — notebooks, dataset, thesis doc, presentation, deployment/sample-test docs (not required to run the app)  
+- **backend/train_dnn.py** — trains DNN + saves artifacts (reads from `Research Materials/CKD_initial_dataset.csv`)  
+- **backend/ml/** — feature pipeline, preprocessor, trained DNN  
 - **backend/app/** — FastAPI app, `/predict`  
 - **frontend/** — Next.js form + result card  
-- **SAMPLE-TEST-VALUES.md** — example inputs vs expected risk  

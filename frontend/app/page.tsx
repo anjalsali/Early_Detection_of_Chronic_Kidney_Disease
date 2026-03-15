@@ -51,7 +51,7 @@ export default function Home() {
                            and limitations and contributing to the discourse on machine learning in healthcare.
                         </p>
                         <p className="mt-5 text-zinc-600 text-sm">
-                           NephroVision uses the trained <strong>Deep Neural Network (DNN)</strong> to estimate the <strong>likelihood of early CKD</strong> from the same 24 inputs. It is a{" "}
+                           NephroSight uses the trained <strong>Deep Neural Network (DNN)</strong> to estimate the <strong>likelihood of early CKD</strong> from the same 24 inputs. It is a{" "}
                            <strong>decision-support tool</strong> only and does not replace clinical assessment, laboratory diagnosis, or specialist care. <strong>Dataset:</strong> UCI Chronic Kidney
                            Disease dataset (UCI Machine Learning Repository). Research: <em>Early Detection of Chronic Kidney Disease Using Machine Learning Techniques</em> (Anjal Sali, University of
                            Hertfordshire, 2024). Keywords: CKD, SVM, KNN, Deep Neural Network (DNN).
@@ -331,7 +331,7 @@ export default function Home() {
                      <div className="space-y-1">
                         <p className="text-base font-semibold tracking-tight text-zinc-800">
                            <span className="text-red-600">Nephro</span>
-                           <span className="text-zinc-800">Vision</span>
+                           <span className="text-zinc-800">Sight</span>
                         </p>
                         <p className="max-w-md text-sm text-zinc-500">Decision support only. Not a substitute for professional medical care.</p>
                      </div>
