@@ -1,64 +1,71 @@
 # Sample test values
 
-Use these in the web form to check that the app behaves as expected.
+The model is trained on **`CKD_initial_dataset.csv`**. **P(CKD)** is the probability of the `ckd` class (`notckd` ≈ low %).
+
+Use the form’s **Load sample inputs** or copy values below. After **`python backend/train_dnn.py`**, you should see:
+
+- **CKD-like rows** → high % (often **70–100%**)
+- **notckd-like rows** → low % (often **under 30%**)
 
 ---
 
-## Test 1 — Expect **low** risk of CKD
+## Test A — **High** risk (CKD patient, ~id 9 in initial dataset)
+
+Typical severe markers: high urea/creatinine, low Hb/PCV, comorbidities.
 
 | Field | Value |
 |-------|--------|
-| Age (years) | 48 |
-| Blood pressure (mm/Hg) | 80 |
+| Age | 53 |
+| Blood pressure | 90 |
 | Specific gravity | 1.02 |
-| Albumin | 1 |
+| Albumin | 2 |
 | Sugar | 0 |
-| Blood glucose random (mg/dL) | 121 |
-| Blood urea (mg/dL) | 36 |
-| Serum creatinine (mg/dL) | 1.2 |
-| Sodium (mEq/L) | 141 |
-| Potassium (mEq/L) | 5 |
-| Haemoglobin (g/dL) | 15.4 |
-| Packed cell volume | 44 |
-| White blood cell count | 7800 |
-| Red blood cell count (millions/cmm) | 5.2 |
-| Red blood cells (abnormal) | Yes |
-| Pus cells (abnormal) | Yes |
-| Pus cell clumps | No |
+| Red blood cells (abnormal) | **Yes** |
+| Pus cells (abnormal) | **Yes** |
+| Pus cell clumps | **Yes** |
 | Bacteria | No |
+| Blood glucose random | 70 |
+| Blood urea | **107** |
+| Serum creatinine | **7.2** |
+| Sodium | 114 |
+| Potassium | 3.7 |
+| Haemoglobin | **9.5** |
+| Packed cell volume | **29** |
+| White blood cell count | 12100 |
+| Red blood cell count | 3.7 |
 | Hypertension | Yes |
 | Diabetes mellitus | Yes |
 | Coronary artery disease | No |
-| Poor appetite | No |
+| Poor appetite | Yes |
 | Pedal edema | No |
-| Anemia | No |
+| Anemia | Yes |
 
-**Expected:** “Low likelihood of CKD” and **low** estimated risk of CKD (e.g. under 30%).
+**Expected:** High likelihood of CKD, **high %** (e.g. **> 80%**).
 
 ---
 
-## Test 2 — Expect **high** risk of CKD
+## Test B — **Low** risk (healthy / notckd, ~end of initial dataset)
 
 | Field | Value |
 |-------|--------|
-| Age (years) | 60 |
-| Blood pressure (mm/Hg) | 70 |
+| Age | 69 |
+| Blood pressure | 70 |
 | Specific gravity | 1.02 |
 | Albumin | 0 |
 | Sugar | 0 |
-| Blood glucose random (mg/dL) | 94 |
-| Blood urea (mg/dL) | 58 |
-| Serum creatinine (mg/dL) | 0.6 |
-| Sodium (mEq/L) | 147 |
-| Potassium (mEq/L) | 5 |
-| Haemoglobin (g/dL) | 16.4 |
-| Packed cell volume | 43 |
-| White blood cell count | 10800 |
-| Red blood cell count (millions/cmm) | 5.7 |
-| Red blood cells (abnormal) | Yes |
-| Pus cells (abnormal) | Yes |
+| Red blood cells (abnormal) | No |
+| Pus cells (abnormal) | No |
 | Pus cell clumps | No |
 | Bacteria | No |
+| Blood glucose random | 83 |
+| Blood urea | 42 |
+| Serum creatinine | 1.2 |
+| Sodium | 139 |
+| Potassium | 3.7 |
+| Haemoglobin | 16.2 |
+| Packed cell volume | 50 |
+| White blood cell count | 9300 |
+| Red blood cell count | 5.4 |
 | Hypertension | No |
 | Diabetes mellitus | No |
 | Coronary artery disease | No |
@@ -66,41 +73,13 @@ Use these in the web form to check that the app behaves as expected.
 | Pedal edema | No |
 | Anemia | No |
 
-**Expected:** “High likelihood of CKD” and **high** estimated risk of CKD (e.g. over 70%).
+**Expected:** Low likelihood of CKD, **low %** (e.g. **< 20%**).
 
 ---
 
-## Test 3 — Another low-risk example
+## Encoding (form ↔ API)
 
-| Field | Value |
-|-------|--------|
-| Age (years) | 40 |
-| Blood pressure (mm/Hg) | 80 |
-| Specific gravity | 1.025 |
-| Albumin | 0 |
-| Sugar | 0 |
-| Blood glucose random (mg/dL) | 140 |
-| Blood urea (mg/dL) | 10 |
-| Serum creatinine (mg/dL) | 1.2 |
-| Sodium (mEq/L) | 135 |
-| Potassium (mEq/L) | 5 |
-| Haemoglobin (g/dL) | 15 |
-| Packed cell volume | 48 |
-| White blood cell count | 10400 |
-| Red blood cell count (millions/cmm) | 4.5 |
-| Red blood cells (abnormal) | Yes |
-| Pus cells (abnormal) | Yes |
-| Pus cell clumps | No |
-| Bacteria | No |
-| Hypertension | No |
-| Diabetes mellitus | No |
-| Coronary artery disease | No |
-| Poor appetite | No |
-| Pedal edema | No |
-| Anemia | No |
+- **Yes** on binary / “abnormal” fields = **1**, **No** / normal = **0**  
+- **Poor appetite** = **1**, good appetite = **0**  
 
-**Expected:** “Low likelihood of CKD” and low estimated risk (from dataset, this row is labeled no CKD).
-
----
-
-Fill the form with one set of values, click **Check CKD risk**, then try another set. You should see the result and risk % change between Tests 1/3 (low) and Test 2 (high).
+If results look inverted, re-run **`python backend/train_dnn.py`** and restart the API so it loads the new `preprocessor.pkl` and `ckd_dnn.keras`.

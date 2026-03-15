@@ -51,7 +51,14 @@ export const predictCKD = async (
         "API not found. Set NEXT_PUBLIC_CKD_API_URL to your Render URL (no trailing slash) and redeploy."
       );
     }
-    throw new Error(text || `Prediction failed: ${res.statusText}`);
+    let message = text || `Prediction failed: ${res.statusText}`;
+    try {
+      const json = JSON.parse(text) as { detail?: string };
+      if (typeof json.detail === "string") message = json.detail;
+    } catch {
+      /* use message as-is */
+    }
+    throw new Error(message);
   }
 
   return res.json();

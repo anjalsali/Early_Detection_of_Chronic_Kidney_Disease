@@ -307,7 +307,6 @@ export default function Home() {
                <Section
                   id="detection"
                   title="CKD risk assessment"
-                  subtitle="Enter patient data below. Predictions use the Deep Neural Network (DNN) model. All fields use the same units and scales as in the form labels and normal ranges."
                   className="mt-24"
                >
                   <div className="mt-10 grid gap-10 lg:grid-cols-[1fr,minmax(300px,1fr)]">
@@ -340,7 +339,7 @@ export default function Home() {
                            Decision support only. Not a substitute for professional medical care.
                         </p>
                      </div>
-                     <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8 md:flex-shrink-0">
+                     <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8 md:shrink-0">
                         <a
                            href="https://www.linkedin.com/in/anjalsali"
                            target="_blank"

@@ -8,9 +8,11 @@ type SectionProps = {
   className?: string;
   title?: string;
   subtitle?: string;
+  /** When true, subtitle uses full width of the section instead of max-w-2xl. */
+  subtitleFullWidth?: boolean;
 };
 
-const Section = ({ id, children, className = "", title, subtitle }: SectionProps) => {
+const Section = ({ id, children, className = "", title, subtitle, subtitleFullWidth }: SectionProps) => {
   const [ref, inView] = useInView({ threshold: 0.08 });
 
   return (
@@ -22,7 +24,13 @@ const Section = ({ id, children, className = "", title, subtitle }: SectionProps
       {(title || subtitle) && (
         <div className="mb-10 text-center">
           {title && <h2 className="text-3xl font-bold text-zinc-900 md:text-4xl">{title}</h2>}
-          {subtitle && <p className="mt-3 max-w-2xl mx-auto text-zinc-600">{subtitle}</p>}
+          {subtitle && (
+            <p
+              className={`mt-3 text-zinc-600 ${subtitleFullWidth ? "w-full text-left" : "max-w-2xl mx-auto"}`}
+            >
+              {subtitle}
+            </p>
+          )}
         </div>
       )}
       {children}
