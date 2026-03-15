@@ -71,7 +71,7 @@ export default function Home() {
                </Section>
 
                <Section id="how-it-works" title="How it works" subtitle="Research methodology and how this app uses it to produce a risk estimate." className="mt-24">
-                  <div className="mx-auto max-w-4xl space-y-8">
+                  <div className="mx-auto max-w-6xl space-y-8">
                      <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-lg shadow-zinc-200/40">
                         <h3 className="font-semibold text-zinc-900">Data collection and cleaning</h3>
                         <p className="mt-2 text-sm text-zinc-600">
