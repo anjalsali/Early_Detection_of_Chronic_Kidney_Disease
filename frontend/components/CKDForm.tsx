@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { CKDFeatures, PredictionResponse } from "@/lib/api";
-import { predictCKD } from "@/lib/api";
+import { predictCKD, wakeBackend } from "@/lib/api";
 
 const initialFormState: CKDFeatures = {
    age: 0,
@@ -243,6 +243,24 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
    const [isSubmitting, setIsSubmitting] = useState(false);
    const [error, setError] = useState<string | null>(null);
    const [selectedSampleId, setSelectedSampleId] = useState<string>("");
+   const formRef = useRef<HTMLFormElement>(null);
+
+   useEffect(() => {
+      const form = formRef.current;
+      if (!form || typeof IntersectionObserver === "undefined") return;
+      const observer = new IntersectionObserver(
+         (entries) => {
+            const [entry] = entries;
+            if (entry?.isIntersecting) {
+               wakeBackend();
+               observer.disconnect();
+            }
+         },
+         { threshold: 0.1, rootMargin: "50px" }
+      );
+      observer.observe(form);
+      return () => observer.disconnect();
+   }, []);
 
    const handleNumericChange = (field: keyof CKDFeatures) => (e: React.ChangeEvent<HTMLInputElement>) => {
       const raw = e.target.value;
@@ -297,7 +315,7 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
    };
 
    return (
-      <form onSubmit={handleSubmit} className="space-y-8" aria-label="CKD risk assessment form" noValidate>
+      <form ref={formRef} onSubmit={handleSubmit} className="space-y-8" aria-label="CKD risk assessment form" noValidate>
          <div className="rounded-xl border border-zinc-200 bg-zinc-50/80 p-4 sm:p-5">
             <p className="mb-4 text-sm text-zinc-600">
                Enter the patient’s clinical and demographic data below. For the most accurate risk estimate, fill in as many of the 24 parameters as you can. Load sample data from the dropdown to explore the tool. Predictions are based on the trained DNN model; units match the form labels.

@@ -34,6 +34,18 @@ const API_BASE_URL = (
   process.env.NEXT_PUBLIC_CKD_API_URL ?? "http://127.0.0.1:8000"
 ).replace(/\/$/, "");
 
+/**
+ * Ping the backend (e.g. GET /health) to wake it from sleep on Render.
+ * Call once on app load so the server is ready when the user submits the form.
+ * Fire-and-forget; ignores errors (e.g. during SSR or when backend is unreachable).
+ */
+export const wakeBackend = (): void => {
+  const url = `${API_BASE_URL}/health`;
+  fetch(url, { method: "GET", keepalive: true }).catch(() => {
+    // Ignore: backend may be down, CORS, or cold start; user will see error on submit.
+  });
+};
+
 export const predictCKD = async (
   payload: CKDFeatures
 ): Promise<PredictionResponse> => {

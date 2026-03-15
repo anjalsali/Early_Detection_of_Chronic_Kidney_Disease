@@ -23,6 +23,8 @@ Writes:
 - `backend/ml/preprocessor.pkl` — imputer + scaler + feature column order  
 - `backend/ml/ckd_dnn.keras` — trained DNN  
 
+**After upgrading backend dependencies** (e.g. a newer scikit-learn), run `python backend/train_dnn.py` again so the saved preprocessor matches the installed versions.
+
 ## Run the web app locally
 
 ### Backend (FastAPI)
