@@ -1,6 +1,6 @@
 # Early Detection of Chronic Kidney Disease
 
-Thesis project: ML-based early CKD detection and a web app for risk assessment.
+Thesis project: ML-based early CKD detection and a web app for risk assessment. The app is branded **NephroVision**.
 
 ## Dataset & model
 

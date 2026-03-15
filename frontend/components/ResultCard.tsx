@@ -69,7 +69,7 @@ const ResultCard = ({ result }: ResultCardProps) => {
 
             <div className="mt-5 rounded-lg border border-amber-200/80 bg-amber-50/60 px-4 py-3">
                <p className="text-xs font-medium text-amber-900/90">
-                  Disclaimer: RenalCheck is a research-based tool. Always consult a qualified healthcare professional for diagnosis and treatment decisions.
+                  Disclaimer: NephroVision is a research-based tool. Always consult a qualified healthcare professional for diagnosis and treatment decisions.
                </p>
             </div>
          </div>

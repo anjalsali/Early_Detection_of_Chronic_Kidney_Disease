@@ -9,14 +9,16 @@ const heroButtonClass =
 const Hero = () => (
   <section
     id="hero"
-    className="relative flex min-h-[85vh] scroll-mt-24 flex-col items-center justify-center px-4 pt-24 pb-16 text-center md:pt-32"
+    className="relative flex min-h-screen flex-col scroll-mt-24"
   >
     <div className="absolute inset-0 bg-linear-to-b from-red-50/80 via-white to-slate-50/50" />
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(220,38,38,0.12),transparent_50%)]" />
-    <div className="relative z-10 mx-auto max-w-3xl space-y-8">
+    <div className="h-14 shrink-0 md:h-16" aria-hidden />
+    <div className="relative z-10 flex min-h-0 flex-1 flex-col items-center justify-center px-4 py-8 text-center">
+      <div className="mx-auto max-w-3xl space-y-8">
       <h1 className="text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl xl:text-8xl [font-family:var(--font-plus-jakarta),ui-sans-serif,sans-serif]">
-        <span className="text-red-700">Renal</span>
-        <span className="text-slate-800">Check</span>
+        <span className="text-red-700">Nephro</span>
+        <span className="text-slate-800">Vision</span>
       </h1>
       <p className="text-2xl font-medium text-zinc-700 md:text-3xl lg:text-4xl" role="doc-subtitle">
         Early detection of{" "}
@@ -44,6 +46,7 @@ const Hero = () => (
           </svg>
           GitHub
         </a>
+      </div>
       </div>
     </div>
   </section>

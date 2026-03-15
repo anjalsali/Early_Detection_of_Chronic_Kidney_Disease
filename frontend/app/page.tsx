@@ -51,7 +51,7 @@ export default function Home() {
                            and limitations and contributing to the discourse on machine learning in healthcare.
                         </p>
                         <p className="mt-5 text-zinc-600 text-sm">
-                           RenalCheck uses the trained <strong>Deep Neural Network (DNN)</strong> to estimate the <strong>likelihood of early CKD</strong> from the same 24 inputs. It is a{" "}
+                           NephroVision uses the trained <strong>Deep Neural Network (DNN)</strong> to estimate the <strong>likelihood of early CKD</strong> from the same 24 inputs. It is a{" "}
                            <strong>decision-support tool</strong> only and does not replace clinical assessment, laboratory diagnosis, or specialist care. <strong>Dataset:</strong> UCI Chronic Kidney
                            Disease dataset (UCI Machine Learning Repository). Research: <em>Early Detection of Chronic Kidney Disease Using Machine Learning Techniques</em> (Anjal Sali, University of
                            Hertfordshire, 2024). Keywords: CKD, SVM, KNN, Deep Neural Network (DNN).
@@ -275,7 +275,10 @@ export default function Home() {
                      <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-lg shadow-zinc-200/40">
                         <h3 className="font-semibold text-zinc-900">Assessment pipeline: form submission to risk result</h3>
                         <p className="mt-3 text-sm text-zinc-600 leading-relaxed">
-                           Submitting the risk assessment form triggers a standardised pipeline. Your <strong>24 clinical and demographic inputs</strong> are sent to the backend in the same format as the UCI training data. The <strong>preprocessor</strong> (median imputation and standard scaling) aligns the feature vector with the model’s training distribution. The <strong>trained DNN</strong> outputs a probability in [0, 1], which is converted to a <strong>risk percentage</strong> and a <strong>high- or low-likelihood</strong> label using a 50% threshold. The pipeline matches the research workflow; only the input source differs (live form entry instead of dataset rows).
+                           Submitting the risk assessment form triggers a standardised pipeline. Your <strong>24 clinical and demographic inputs</strong> are sent to the backend in the same format as
+                           the UCI training data. The <strong>preprocessor</strong> (median imputation and standard scaling) aligns the feature vector with the model’s training distribution. The{" "}
+                           <strong>trained DNN</strong> outputs a probability in [0, 1], which is converted to a <strong>risk percentage</strong> and a <strong>high- or low-likelihood</strong> label
+                           using a 50% threshold. The pipeline matches the research workflow; only the input source differs (live form entry instead of dataset rows).
                         </p>
                      </div>
                      <DNNFlowDiagram />
@@ -327,8 +330,8 @@ export default function Home() {
                   <div className="flex flex-col items-center gap-5 text-center md:flex-row md:items-center md:justify-between md:gap-6 md:text-left">
                      <div className="space-y-1">
                         <p className="text-base font-semibold tracking-tight text-zinc-800">
-                           <span className="text-red-600">Renal</span>
-                           <span className="text-zinc-800">Check</span>
+                           <span className="text-red-600">Nephro</span>
+                           <span className="text-zinc-800">Vision</span>
                         </p>
                         <p className="max-w-md text-sm text-zinc-500">Decision support only. Not a substitute for professional medical care.</p>
                      </div>
