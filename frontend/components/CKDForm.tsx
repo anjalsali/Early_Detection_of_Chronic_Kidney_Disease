@@ -67,26 +67,26 @@ const PREDEFINED_SAMPLES: { id: string; label: string; expected: string; values:
    {
       id: "amber",
       label: "Moderate risk patient data",
-      expected: "Moderate %",
+      expected: "Moderate % (~40–75%)",
       values: {
-         age: 44,
-         bloodPressure: 90,
-         specificGravity: 1.01,
+         age: 48,
+         bloodPressure: 82,
+         specificGravity: 1.018,
          albumin: 1,
          sugar: 0,
          redBloodCells: 0,
          pusCells: 0,
          pusCellClumps: 0,
          bacteria: 0,
-         bloodGlucoseRandom: 121,
-         bloodUrea: 20,
-         serumCreatinine: 1.1,
-         sodium: 138,
-         potassium: 4.3,
-         haemoglobin: 15,
-         packedCellVolume: 48,
-         whiteBloodCellCount: 8100,
-         redBloodCellCount: 4.8,
+         bloodGlucoseRandom: 110,
+         bloodUrea: 28,
+         serumCreatinine: 1.2,
+         sodium: 137,
+         potassium: 4.2,
+         haemoglobin: 13.5,
+         packedCellVolume: 42,
+         whiteBloodCellCount: 8000,
+         redBloodCellCount: 4.7,
          hypertension: 0,
          diabetesMellitus: 0,
          coronaryArteryDisease: 0,
@@ -299,6 +299,7 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
          setError("Please enter a valid age.");
          return;
       }
+      const startedAt = Date.now();
       setIsSubmitting(true);
       try {
          const payload = { ...current };
@@ -306,6 +307,11 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
             payload.specificGravity = 1.02;
          }
          const result = await predictCKD(payload);
+         const elapsed = Date.now() - startedAt;
+         const minDisplayMs = 2000;
+         if (elapsed < minDisplayMs) {
+            await new Promise((resolve) => setTimeout(resolve, minDisplayMs - elapsed));
+         }
          onResult(result);
       } catch (err) {
          setError(err instanceof Error ? err.message : "Unable to get prediction. Please try again.");
@@ -460,11 +466,14 @@ const CKDForm = ({ onResult }: CKDFormProps) => {
                disabled={isSubmitting || !canSubmit}
                className="w-full rounded-xl bg-linear-to-r from-red-600 to-rose-600 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-red-500/30 transition hover:from-red-700 hover:to-rose-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 disabled:opacity-60 sm:w-auto sm:min-w-[200px]"
             >
-               {isSubmitting ? "Evaluating…" : "Analyse Risk"}
+               {isSubmitting ? "Running assessment" : "Request assessment"}
             </button>
+            {isSubmitting && (
+               <p className="text-xs text-amber-700" role="status">
+                  First request may take 30–60 seconds if the server is waking up.
+               </p>
+            )}
          </div>
-
-         <p className="text-xs text-amber-700">First request may take 30–60 seconds if the server is waking up.</p>
       </form>
    );
 };

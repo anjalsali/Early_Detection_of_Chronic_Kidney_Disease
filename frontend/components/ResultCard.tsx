@@ -10,8 +10,9 @@ const ResultCard = ({ result }: ResultCardProps) => {
    if (!result) return null;
 
    const riskPercent = Math.round(result.probability * 100);
-   const riskBand = riskPercent < 30 ? "low" : riskPercent < 70 ? "moderate" : "high";
-   const isHighLikelihood = result.probability >= 0.5;
+   const riskBand = riskPercent < 40 ? "low" : riskPercent <= 75 ? "moderate" : "high";
+   const likelihoodLabel =
+      riskBand === "high" ? "High likelihood of CKD" : riskBand === "moderate" ? "Moderate likelihood of CKD" : "Low likelihood of CKD";
 
    const borderShadowClass =
       riskBand === "high"
@@ -33,7 +34,7 @@ const ResultCard = ({ result }: ResultCardProps) => {
                      riskBand === "high" ? "bg-red-100 text-red-800" : riskBand === "moderate" ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800"
                   }`}
                >
-                  {isHighLikelihood ? "High likelihood of CKD" : "Low likelihood of CKD"}
+                  {likelihoodLabel}
                </span>
                <span className="text-xs font-medium uppercase tracking-wide text-zinc-400">Risk band: {riskBand}</span>
             </div>

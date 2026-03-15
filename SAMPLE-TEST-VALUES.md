@@ -4,8 +4,11 @@ The model is trained on **`CKD_initial_dataset.csv`**. **P(CKD)** is the probabi
 
 Use the form’s **Load sample inputs** or copy values below. After **`python backend/train_dnn.py`**, you should see:
 
-- **CKD-like rows** → high % (often **70–100%**)
-- **notckd-like rows** → low % (often **under 30%**)
+- **Low risk:** &lt; 40%
+- **Moderate risk:** 40–75%
+- **High risk:** &gt; 75%
+
+So: **notckd-like** → low %, **borderline / mild** → moderate %, **CKD-like** → high %.
 
 ---
 
@@ -40,11 +43,46 @@ Typical severe markers: high urea/creatinine, low Hb/PCV, comorbidities.
 | Pedal edema | No |
 | Anemia | Yes |
 
-**Expected:** High likelihood of CKD, **high %** (e.g. **> 80%**).
+**Expected:** High likelihood of CKD, **high %** (e.g. **> 75%**).
 
 ---
 
-## Test B — **Low** risk (healthy / notckd, ~end of initial dataset)
+## Test B — **Moderate** risk (~40–75%, target ~55–65%)
+
+Mild / borderline markers: slightly low SG, mild anaemia, modest urea/creatinine.
+
+| Field | Value |
+|-------|--------|
+| Age | 48 |
+| Blood pressure | 82 |
+| Specific gravity | 1.018 |
+| Albumin | 1 |
+| Sugar | 0 |
+| Red blood cells (abnormal) | No |
+| Pus cells (abnormal) | No |
+| Pus cell clumps | No |
+| Bacteria | No |
+| Blood glucose random | 110 |
+| Blood urea | 28 |
+| Serum creatinine | 1.2 |
+| Sodium | 137 |
+| Potassium | 4.2 |
+| Haemoglobin | 13.5 |
+| Packed cell volume | 42 |
+| White blood cell count | 8000 |
+| Red blood cell count | 4.7 |
+| Hypertension | No |
+| Diabetes mellitus | No |
+| Coronary artery disease | No |
+| Poor appetite | No |
+| Pedal edema | No |
+| Anemia | No |
+
+**Expected:** Moderate likelihood of CKD, **moderate %** (e.g. **~55–65%**).
+
+---
+
+## Test C — **Low** risk (healthy / notckd, ~end of initial dataset)
 
 | Field | Value |
 |-------|--------|
@@ -73,7 +111,7 @@ Typical severe markers: high urea/creatinine, low Hb/PCV, comorbidities.
 | Pedal edema | No |
 | Anemia | No |
 
-**Expected:** Low likelihood of CKD, **low %** (e.g. **< 20%**).
+**Expected:** Low likelihood of CKD, **low %** (e.g. **&lt; 40%**).
 
 ---
 
