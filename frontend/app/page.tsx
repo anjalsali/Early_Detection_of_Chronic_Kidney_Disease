@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import CKDForm from "@/components/CKDForm";
+import DNNFlowDiagram from "@/components/DNNFlowDiagram";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import ResultCard from "@/components/ResultCard";
@@ -51,10 +52,9 @@ export default function Home() {
                         </p>
                         <p className="mt-5 text-zinc-600 text-sm">
                            RenalCheck uses the trained <strong>Deep Neural Network (DNN)</strong> to estimate the <strong>likelihood of early CKD</strong> from the same 24 inputs. It is a{" "}
-                           <strong>decision-support tool</strong> only and does not replace clinical assessment, laboratory diagnosis, or specialist care.{" "}
-                           <strong>Dataset:</strong> UCI Chronic Kidney Disease dataset (UCI Machine Learning Repository). Research:{" "}
-                           <em>Early Detection of Chronic Kidney Disease Using Machine Learning Techniques</em> (Anjal Sali, University of Hertfordshire, 2024). Keywords: CKD, SVM, KNN, Deep Neural
-                           Network (DNN).
+                           <strong>decision-support tool</strong> only and does not replace clinical assessment, laboratory diagnosis, or specialist care. <strong>Dataset:</strong> UCI Chronic Kidney
+                           Disease dataset (UCI Machine Learning Repository). Research: <em>Early Detection of Chronic Kidney Disease Using Machine Learning Techniques</em> (Anjal Sali, University of
+                           Hertfordshire, 2024). Keywords: CKD, SVM, KNN, Deep Neural Network (DNN).
                         </p>
                         <div className="clear-both" />
                      </div>
@@ -101,11 +101,12 @@ export default function Home() {
                            likelihood, for decision support only.
                         </p>
                      </div>
+
                      <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-lg shadow-zinc-200/40">
                         <h3 className="font-semibold text-zinc-900">The 24 input parameters</h3>
                         <p className="mt-2 text-sm text-zinc-600">
-                           The same <strong>24 clinical and demographic attributes</strong> from the UCI CKD dataset are used both to train the DNN and to produce a risk estimate in this app. Each value
-                           you enter is preprocessed the same way as in the study (MinMax scaling, categorical encoding), then passed through the trained model. Below, parameters are grouped by
+                           The same <strong>24 clinical and demographic attributes</strong> from the UCI CKD dataset are used both to train the DNN and to produce a risk estimate in this app. Each
+                           value you enter is preprocessed the same way as in the study (MinMax scaling, categorical encoding), then passed through the trained model. Below, parameters are grouped by
                            category for comparison; units and normal ranges match the form and the original dataset.
                         </p>
                         <div className="mt-6 overflow-x-auto">
@@ -267,19 +268,17 @@ export default function Home() {
                            </table>
                         </div>
                         <p className="mt-4 text-sm text-zinc-500">
-                           In the app, numerical parameters use the units above; binary and categorical inputs are encoded (e.g. 0/1) before being scaled with the same preprocessor used in training. The
-                           DNN then outputs a single probability, which is shown as a percentage and classified as high or low likelihood.
+                           In the app, numerical parameters use the units above; binary and categorical inputs are encoded (e.g. 0/1) before being scaled with the same preprocessor used in training.
+                           The DNN then outputs a single probability, which is shown as a percentage and classified as high or low likelihood.
                         </p>
                      </div>
                      <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-lg shadow-zinc-200/40">
-                        <h3 className="font-semibold text-zinc-900">From form to risk estimate</h3>
-                        <p className="mt-2 text-sm text-zinc-600">
-                           When you submit the risk assessment form: (1) your <strong>24 inputs</strong> are sent to the backend in the same structure as the UCI dataset; (2) the same{" "}
-                           <strong>preprocessor</strong> (saved from training) applies MinMax scaling and any encoding so the feature vector matches what the DNN was trained on; (3) the{" "}
-                           <strong>trained DNN</strong> produces a probability between 0 and 1; (4) the app displays this as a <strong>percentage</strong> and a <strong>high/low likelihood</strong> label
-                           (threshold 50%). This pipeline is identical in structure to the research workflow—only the input source changes (user form instead of dataset rows).
+                        <h3 className="font-semibold text-zinc-900">Assessment pipeline: form submission to risk result</h3>
+                        <p className="mt-3 text-sm text-zinc-600 leading-relaxed">
+                           Submitting the risk assessment form triggers a standardised pipeline. Your <strong>24 clinical and demographic inputs</strong> are sent to the backend in the same format as the UCI training data. The <strong>preprocessor</strong> (median imputation and standard scaling) aligns the feature vector with the model’s training distribution. The <strong>trained DNN</strong> outputs a probability in [0, 1], which is converted to a <strong>risk percentage</strong> and a <strong>high- or low-likelihood</strong> label using a 50% threshold. The pipeline matches the research workflow; only the input source differs (live form entry instead of dataset rows).
                         </p>
                      </div>
+                     <DNNFlowDiagram />
                      <ul className="grid gap-6 sm:grid-cols-3">
                         <li className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-lg shadow-zinc-200/40">
                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-red-100 to-rose-100 text-lg font-bold text-red-800">1</span>
@@ -304,11 +303,7 @@ export default function Home() {
                   </div>
                </Section>
 
-               <Section
-                  id="detection"
-                  title="CKD risk assessment"
-                  className="mt-24"
-               >
+               <Section id="detection" title="CKD risk assessment" className="mt-24">
                   <div className="mt-10 grid gap-10 lg:grid-cols-[1fr,minmax(300px,1fr)]">
                      <div className="min-w-0">
                         <CKDForm onResult={handleResult} />
@@ -335,9 +330,7 @@ export default function Home() {
                            <span className="text-red-600">Renal</span>
                            <span className="text-zinc-800">Check</span>
                         </p>
-                        <p className="max-w-md text-sm text-zinc-500">
-                           Decision support only. Not a substitute for professional medical care.
-                        </p>
+                        <p className="max-w-md text-sm text-zinc-500">Decision support only. Not a substitute for professional medical care.</p>
                      </div>
                      <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8 md:shrink-0">
                         <a
