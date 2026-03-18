@@ -9,7 +9,7 @@ from pathlib import Path
 
 import joblib
 import numpy as np
-import pandas as pd
+import pandas as pd  # pyright: ignore[reportMissingImports]
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
@@ -40,8 +40,8 @@ def build_preprocessing_pipeline() -> Pipeline:
 
 
 def build_dnn(input_dim: int):
-    from tensorflow import keras
-    from tensorflow.keras import layers
+    from tensorflow import keras  # pyright: ignore[reportMissingImports]
+    from tensorflow.keras import layers  # pyright: ignore[reportMissingImports]
 
     # Output logits (no sigmoid) so we can apply temperature scaling at inference for calibrated probabilities.
     model = keras.Sequential(
@@ -97,7 +97,7 @@ def train_and_save() -> None:
     input_dim = X_train_t.shape[1]
     model = build_dnn(input_dim)
 
-    from tensorflow import keras
+    from tensorflow import keras  # pyright: ignore[reportMissingImports]
 
     early = keras.callbacks.EarlyStopping(
         monitor="val_loss",

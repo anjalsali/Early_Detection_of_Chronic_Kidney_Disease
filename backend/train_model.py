@@ -10,7 +10,10 @@ from sklearn.svm import SVC
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DATA_PATH = PROJECT_ROOT / "CKD_Preprocessed.csv"
+# Dataset moved into `Research Materials/` after refactoring. Keep a fallback to the old location.
+_DATA_PATH_LEGACY = PROJECT_ROOT / "CKD_Preprocessed.csv"
+_DATA_PATH_RESEARCH = PROJECT_ROOT / "Research Materials" / "CKD_Preprocessed.csv"
+DATA_PATH = _DATA_PATH_RESEARCH if _DATA_PATH_RESEARCH.exists() else _DATA_PATH_LEGACY
 MODEL_DIR = PROJECT_ROOT / "backend" / "ml"
 MODEL_PATH = MODEL_DIR / "ckd_model.pkl"
 
