@@ -1,4 +1,4 @@
-# NephroSight: Final Project Report README
+# NephroSight
 
 ## Research Title
 
